@@ -6,11 +6,16 @@
   box-sizing: border-box;
 }
 
-button {
+.arrow {
   background: transparent;
   border: none;
   cursor: pointer;
   outline: none;
+}
+.btmore {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 }
 
 body {
@@ -60,6 +65,10 @@ background: linear-gradient(to right, #859398, #283048); /* W3C, IE 10+/ Edge, F
 
 #menubar li:last-child {
     border-right: none;
+}
+#small-img{
+  height: 70px;
+  width: 70px;
 }
 .section {
 background: #283048;  /* fallback for old browsers */
