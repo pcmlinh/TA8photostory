@@ -1,3 +1,48 @@
+<?php   session_start(); 
+require 'database-config.php';
+
+// --------------------------------------
+$sErr= "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if( isset( $_POST["login"]) ) {
+    $_user = $_POST['username'];
+    $_password = $_POST['pass'];
+    // kiểm tra user
+
+$sql = "SELECT id,username,password from user";
+$result = mysqli_query($conn, $sql);
+if(!$result){
+  die( "Can't query data".mysqli_error($conn) );
+}
+
+if (mysqli_num_rows($result) > 0) {
+
+    while($row = mysqli_fetch_assoc($result)) {
+      $user = $row["username"];
+      $password = $row["password"];
+     
+      if( $_user == $user && $_password == $password  ){
+        $_SESSION["login_status"]= "ready";
+        $_SESSION["name"]= $user;                         
+        header("Location: /TA8photostory/");
+    	}
+    	else{
+        	$sErr= "Username hoặc Password bị sai hoặc chưa tồn tại.";
+    	}
+    
+    }
+} 
+
+mysqli_close($conn);
+//end kiem tra
+    
+
+      
+  }else{
+  	echo "<script>alert('Ngáo đá');</script>";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +80,7 @@
 				<span class="login100-form-title p-b-41">
 					Account Login
 				</span>
-				<form class="login100-form validate-form p-b-33 p-t-5">
+				<form class="login100-form validate-form p-b-33 p-t-5" method="post" name="login">
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<input class="input100" type="text" name="username" placeholder="User name">
@@ -48,7 +93,8 @@
 					</div>
 
 					<div class="container-login100-form-btn m-t-32">
-						<button class="login100-form-btn">
+						
+						<button class="login100-form-btn" type="submit" name="login">
 							Login
 						</button>
 					</div>

@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html >
 <head>
@@ -29,7 +30,14 @@ if (!$result) {
   <li><a href="#home">Home</a></li>
   <li><a href="#news">News</a></li>
   <li><a href="#contact">Contact</a></li>
-  <li style="float:right"><a class="active" href="#about">About</a></li>
+
+   <?php  if($_SESSION['name'] != NULL){?>
+    <li style="float:right"><a class="active" href="/TA8photostory/Login/logout.php">Logout</a></li>
+    <li style="float:right"><a class="active" href="#"><?php echo "Xin chào, ".$_SESSION['name']?></a></li>
+    
+  <?php }else {?>
+      <li style="float:right"><a class="active" href="/TA8photostory/Login/login.php">Login</a></li>
+  <?php } ?>
 </ul>
   <section class="section intro">
   <div class="container">
@@ -86,7 +94,6 @@ if (!$result) {
       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_next.svg" alt="next timeline arrow">
     </button>
 
-<!-- --------------------nút thêm---------------------- -->
 
   <div class='menu closed'>
     <div class='messages button'></div>
@@ -98,8 +105,6 @@ if (!$result) {
   </div>
 
 
-
-<!-- --------------------nút thêm---------------------- -->
 
   </div>
 </section>
@@ -117,8 +122,8 @@ if (!$result) {
   //   $(".main.button").text("Add");
   // } else {
   //   $(".main.button").text("Add");
-  }
-})
+//   }
+// })
 </script>
 
 </body>
