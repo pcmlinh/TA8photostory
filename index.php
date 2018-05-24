@@ -38,6 +38,14 @@ if (!$result) {
 </section>
 
 <section class="timeline">
+  <div class='menu closed'>
+    <div class='messages button'></div>
+    <div class='music button'></div>
+   <div class='home button'></div>
+   <div class='places button'></div>
+   <div class='bookmark button'></div>
+   <div class='main button' href="input.php"><a href="input.php">Add</a></div>
+  </div>
   <ol>
         <?php 
         if ((mysqli_num_rows($result) > 0) ) {
@@ -45,41 +53,41 @@ if (!$result) {
             $arrayVals[] = $row;
           }
         }
+
         if (mysqli_num_rows($resultyear) > 0) {
 
           while($row = mysqli_fetch_assoc($resultyear)) {
             $timeline_year=$row["timeline_year"];
             echo '<li>
-                    <div>
+                    <div id="timeline">
 
                       <time>' . $row["timeline_year"] . '</time>';
                         $len = count($arrayVals);
-                        for($x = 0, $limit=0; ($x < $len) ; $x++) {
+                        for($x = 0; ($x < $len) ; $x++) {
                         $row = $arrayVals[$x];
                           if (date("Y",strtotime($row["timeline"]))==$timeline_year) {
-                            echo '<img id="small-img" src="' . $row["image"] .'">';
-                            $limit++;
-                            if ($limit==6) {
-                              break;
-                            }
+                            echo '
+                            
+                            <img id="small-img" src="' . $row["image"] .'" style="cursor:pointer" onclick="onClick(this)"> 
+                            
+
+                                ';
                           }                            
-                        }
-
-                        
-                           
-
+                        }                                                  
                       echo '
-                      <button class="btmore">More</button>
                     </div>
                   </li>';
           }
         }
     // output data of each row
     ?>
+
+
   </ol>
+
   
   <div class="arrows">
-    <button class="arrow arrow__prev disabled" disabled>
+    <button class="arrow arrow__prev disabled">
       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_prev.svg" alt="prev timeline arrow">
     </button>
     <button class="arrow arrow__next">
@@ -87,9 +95,13 @@ if (!$result) {
     </button>
   </div>
 </section>
+
   <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js'></script>
 
-    <script src="js/index.js"></script>
+  <script src="js/index.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>
