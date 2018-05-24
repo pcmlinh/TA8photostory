@@ -7,7 +7,7 @@
   
   
       <link rel="stylesheet" href="css/style.css">
-
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   
 </head>
 <body>
@@ -38,14 +38,6 @@ if (!$result) {
 </section>
 
 <section class="timeline">
-  <div class='menu closed'>
-    <div class='messages button'></div>
-    <div class='music button'></div>
-   <div class='home button'></div>
-   <div class='places button'></div>
-   <div class='bookmark button'></div>
-   <div class='main button' href="input.php"><a href="input.php">Add</a></div>
-  </div>
   <ol>
         <?php 
         if ((mysqli_num_rows($result) > 0) ) {
@@ -93,15 +85,41 @@ if (!$result) {
     <button class="arrow arrow__next">
       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_next.svg" alt="next timeline arrow">
     </button>
+
+<!-- --------------------nút thêm---------------------- -->
+
+  <div class='menu closed'>
+    <div class='messages button'></div>
+    <div class='music button'></div>
+   <div class='home button'></div>
+   <div class='places button'></div>
+   <div class='bookmark button'></div>
+   <div class='main button' href="input.php"><a href="input.php">Add</a></div>
+  </div>
+
+
+
+<!-- --------------------nút thêm---------------------- -->
+
   </div>
 </section>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js'></script>
-
   <script src="js/index.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script>
 
+  //   $(".menu").hover(function(){
+  // $(this).toggleClass("closed");
+  // $(this).hasClass("closed")
+  // if($(this).hasClass("closed")) {
+  //   $(".main.button").text("Add");
+  // } else {
+  //   $(".main.button").text("Add");
+  }
+})
+</script>
 
 </body>
 </html>

@@ -269,6 +269,7 @@ background: linear-gradient(to right, #859398, #283048); /* W3C, IE 10+/ Edge, F
     display: none;
   }
 }
+<<<<<<< HEAD
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -346,6 +347,9 @@ background: linear-gradient(to right, #859398, #283048); /* W3C, IE 10+/ Edge, F
         width: 100%;
     }
 }
+=======
+
+>>>>>>> 2fbe6adcc4f70027492b051116c4edb274d89b9b
 /*------------------------------------------nút add----------------------------------------------------------*/
 @import "https://fonts.googleapis.com/css?family=Alegreya+Sans:400,500";
 html {
@@ -418,7 +422,6 @@ html {
   background-color: #1ba5cd;
   top: 0%;
   left: 225%;
-  background-image: url(https://bennettfeely.com/cdpn/home.svg);
   -webkit-transition-duration: 0.525s;
           transition-duration: 0.525s;
 }
@@ -431,7 +434,6 @@ html {
   background-color: #1ab254;
   top: 86.10368%;
   left: 207.873%;
-  background-image: url(https://bennettfeely.com/cdpn/music.svg);
   -webkit-transition-duration: 0.675s;
           transition-duration: 0.675s;
 }
@@ -444,7 +446,6 @@ html {
   background-color: #fec72e;
   top: 159.09908%;
   left: 159.09908%;
-  background-image: url(https://bennettfeely.com/cdpn/messages.svg);
   -webkit-transition-duration: 0.825s;
           transition-duration: 0.825s;
 }
@@ -457,7 +458,6 @@ html {
   background-color: #fa7d39;
   top: 207.873%;
   left: 86.10368%;
-  background-image: url(https://bennettfeely.com/cdpn/places.svg);
   -webkit-transition-duration: 0.975s;
           transition-duration: 0.975s;
 }
@@ -470,7 +470,6 @@ html {
   background-color: #ee5656;
   top: 225%;
   left: 0%;
-  background-image: url(https://bennettfeely.com/cdpn/bookmark.svg);
   -webkit-transition-duration: 1.125s;
           transition-duration: 1.125s;
 }
@@ -478,6 +477,3 @@ html {
   -webkit-transform: translate3d(-9.51056%, -228.09016%, 0) rotate(-180deg);
           transform: translate3d(-9.51056%, -228.09016%, 0) rotate(-180deg);
 }
-
-/*----------------CSS nút add--------------*/
-      
