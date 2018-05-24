@@ -22,7 +22,7 @@
 
 
         <div class="full-width">
-            <h1 class="text-center color">Edit Profile</h1>
+            <h1 class="text-center color">Add New Photo</h1>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="custom-form">
 

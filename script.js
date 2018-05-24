@@ -55,6 +55,28 @@ $("#image-input").change(function(){
 })
 	// ---------------------------------test upload picture----------------------------------
 
-// -----------------------------timeline-----------------------------
 
-// -----------------------------timeline-----------------------------
+// ========================add album==============================
+$('#submit2').click(function(event){
+		event.preventDefault();
+		// var formData = $("#add-product-form").serialize();
+		// console.log(formData);
+		var productform = document.querySelector("#add-product-form2");
+		$.ajax({
+			method :"POST",
+			processData:false,
+			contentType: false,
+			dataType:'json',
+			url: "addAlbum.php",
+			data: new FormData(productform),
+		}).done(function(data){
+			console.log(data);
+			
+			
+
+		}).fail(function(jqXHR, statusText, errorThrown){
+			console.log("Fail :"+jqXHR.responseText);
+			console.log(errorThrown);
+		})
+	})
+// ========================add album==============================
