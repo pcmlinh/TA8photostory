@@ -1,7 +1,6 @@
-﻿<?php session_start();?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html >
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
   <meta charset="UTF-8">
   <title>Building a Horizontal Timeline With CSS and JavaScript</title>
@@ -10,8 +9,7 @@
   
       <link rel="stylesheet" href="css/style.css">
       <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-      
-      <link rel="stylesheet" type="text/css" href="css/css.css">
+  
 </head>
 <body>
 <?php
@@ -32,10 +30,7 @@ if (!$result) {
   <li><a href="#home">Home</a></li>
   <li><a href="#news">News</a></li>
   <li><a href="#contact">Contact</a></li>
-  <div class="socials-share">
-    <a class="bg-facebook" href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"><span class="fa fa-facebook"></span> Share</a>
-    <a class="bg-google-plus" href="https://plus.google.com/share?url=" target="_blank"><span class="fa fa-google-plus"></span> Plus</a>
-  </div>
+
    <?php  if($_SESSION['name'] != NULL){?>
     <li style="float:right"><a class="active" href="/TA8photostory/Login/logout.php">Logout</a></li>
     <li style="float:right"><a class="active" href="#"><?php echo "Xin chào, ".$_SESSION['name']?></a></li>
@@ -71,12 +66,16 @@ if (!$result) {
                         for($x = 0; ($x < $len) ; $x++) {
                         $row = $arrayVals[$x];
                           if (date("Y",strtotime($row["timeline"]))==$timeline_year) {
+                            echo  '<a href="#" pull-right" data-toggle="modal" data-target="#'.$row["id"].'">';
                             echo '
                             
-                            <img id="small-img" src="' . $row["image"] .'" style="cursor:pointer" onclick="onClick(this)"> 
+                            <img id="small-img" src="' . $row["image"] .'"> 
                             
 
                                 ';
+
+                            echo  '</a>';
+                            
                           }                            
                         }                                                  
                       echo '
@@ -98,6 +97,94 @@ if (!$result) {
     <button class="arrow arrow__next">
       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_next.svg" alt="next timeline arrow">
     </button>
+
+
+<?php 
+$sqll = "SELECT id, title, description, image, phstories_id, timeline from photos";
+$resultt = mysqli_query($conn, $sqll);
+if(!$resultt){
+    die( "Can't query data".mysqli_error($conn) );
+}
+  if (mysqli_num_rows($resultt) > 0) {
+    while($row = mysqli_fetch_assoc($resultt)) {   
+      echo'
+        <div id="'.$row["id"].'" class="modal fade" role="dialog">
+                                <div class="modal-dialog modal-sm">
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h1 class="modal-title">'.$row["title"].'</h1>
+                                    </div>
+                                    <div class="modal-body" id="bigimg">
+                                      <img id="big-img" src="'.$row["image"].'">
+                                      <div><td><tr><p><h4>'.$row["description"].'</h4></p></tr></td></div>
+                                      <h4>'.$row["timeline"].'</h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Xóa</button>
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>                                   
+                                  </div>
+                                </div>
+                              </div>
+      ';
+    }
+  } else {
+    echo "0 result !";
+  }
+
+
+?>
+
+
+
+
+
+<?php 
+        if ((mysqli_num_rows($result) > 0) ) {
+          while($row = mysqli_fetch_assoc($result)) {
+            $arrayVals[] = $row;
+          }
+        }
+
+        if (mysqli_num_rows($resultyear) > 0) {
+
+          while($row = mysqli_fetch_assoc($resultyear)) {
+            $timeline_year=$row["timeline_year"];
+            echo '<li>
+                    <div id="timeline">
+
+                      <time>' . $row["timeline_year"] . '</time>';
+                        $len = count($arrayVals);
+                        for($x = 0; ($x < $len) ; $x++) {
+                        $row = $arrayVals[$x];
+                          if (date("Y",strtotime($row["timeline"]))==$timeline_year) {
+                            
+                            echo'
+                              <div id="'.$row["id"].'" class="modal fade" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                    <div class="modal-body">
+                                      <img id="small-img" src="' . $row["image"] .'">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>                            
+                            ';
+                          }                            
+                        }                                                  
+                      echo '
+                    </div>
+                  </li>';
+          }
+        }
+    // output data of each row
+    ?>
+
+
+
 
 
   <div class='menu closed'>
