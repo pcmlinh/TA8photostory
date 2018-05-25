@@ -122,7 +122,10 @@ if(!$resultt){
                                       <h4>'.$row["timeline"].'</h4>
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Xóa</button>
+                                    <a href="del.php?id='.$row['id'].'">
+                                      <button type="button" class="btn btn-danger"  onclick="ConfirmDelete();">Xóa</button>
+                                    </a>
+
                                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     </div>                                   
                                   </div>
@@ -206,6 +209,9 @@ if(!$resultt){
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   <script>
+  function ConfirmDelete() {
+   return confirm("Bạn có chắc chắn muốn xóa?");
+ }
 
   //   $(".menu").hover(function(){
   // $(this).toggleClass("closed");
