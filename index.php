@@ -1,6 +1,7 @@
-<?php session_start();?>
+﻿<?php session_start();?>
 <!DOCTYPE html>
 <html >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
   <meta charset="UTF-8">
   <title>Building a Horizontal Timeline With CSS and JavaScript</title>
@@ -9,7 +10,8 @@
   
       <link rel="stylesheet" href="css/style.css">
       <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  
+      
+      <link rel="stylesheet" type="text/css" href="css/css.css">
 </head>
 <body>
 <?php
@@ -30,7 +32,10 @@ if (!$result) {
   <li><a href="#home">Home</a></li>
   <li><a href="#news">News</a></li>
   <li><a href="#contact">Contact</a></li>
-
+  <div class="socials-share">
+    <a class="bg-facebook" href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"><span class="fa fa-facebook"></span> Share</a>
+    <a class="bg-google-plus" href="https://plus.google.com/share?url=" target="_blank"><span class="fa fa-google-plus"></span> Plus</a>
+  </div>
    <?php  if($_SESSION['name'] != NULL){?>
     <li style="float:right"><a class="active" href="/TA8photostory/Login/logout.php">Logout</a></li>
     <li style="float:right"><a class="active" href="#"><?php echo "Xin chào, ".$_SESSION['name']?></a></li>
