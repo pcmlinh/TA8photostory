@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <html><body>
 <?php
-        $_SESSION['name']=NULL;
+        unset($_SESSION['name']);
         header("Location:  /TA8photostory/");
         ?>
         

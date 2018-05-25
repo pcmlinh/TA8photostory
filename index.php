@@ -8,6 +8,7 @@
   
   
       <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" type="text/css" href="css/css.css">
       <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   
 </head>
@@ -30,8 +31,11 @@ if (!$result) {
   <li><a href="#home">Home</a></li>
   <li><a href="#news">News</a></li>
   <li><a href="#contact">Contact</a></li>
-
-   <?php  if($_SESSION['name'] != NULL){?>
+  <div class="socials-share">
+    <a class="bg-facebook" href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"><span class="fa fa-facebook"></span> Share</a>
+    <a class="bg-google-plus" href="https://plus.google.com/share?url" target="_blank"><span class="fa fa-google-plus"></span> Plus</a>
+  </div>
+   <?php  if(isset($_SESSION['name'])){?>
     <li style="float:right"><a class="active" href="/TA8photostory/Login/logout.php">Logout</a></li>
     <li style="float:right"><a class="active" href="#"><?php echo "Xin chào, ".$_SESSION['name']?></a></li>
     
@@ -118,7 +122,7 @@ if(!$resultt){
                                     </div>
                                     <div class="modal-body" id="bigimg">
                                       <img id="big-img" src="'.$row["image"].'">
-                                      <div><td><tr><p><h4>'.$row["description"].'</h4></p></tr></td></div>
+                                      <h4 class="description">'.$row["description"].'<h4>
                                       <h4>'.$row["timeline"].'</h4>
                                     </div>
                                     <div class="modal-footer">
